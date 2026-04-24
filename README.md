@@ -15,7 +15,7 @@ A Unity-based maze game inspired by Pac-Man mechanics. The player controls a bal
 
 ## How to Run
 1. Open the project in Unity Hub
-2. Use Unity version (your version here)
+2. Use Unity version 6
 3. Press Play in the editor
 
 ## Current Issues / TODO
