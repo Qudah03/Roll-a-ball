@@ -60,14 +60,31 @@ public class NetworkPlayerController : NetworkBehaviour
                     if (!isLocalPlayer) return;
                     
                     _moveInput = playerControls.ReadValue<Vector2>().normalized;
-                    Debug.Log("Local Player Input: " + _moveInput);
+                    // Debug.Log("Local Player Input: " + _moveInput);
 
-                    // Jump trigger
+                    // // Jump trigger
+                    // if (jumpAction.triggered && _isGrounded)
+                    // {
+                    //     // tell the server you want to jumo
+                    //     CmdJump();
+                    // }
+
                     if (jumpAction.triggered && _isGrounded)
-                    {
-                        // tell the server you want to jumo
-                        CmdJump();
-                    }
+                        {
+                            // Check if the jump button was pressed this frame
+                            // AND make sure the player is currently touching the ground.
+                            // This prevents infinite jumping in the air.
+
+                            // Apply an instant upward physics force to the Rigidbody.
+                            // Vector3.up = (0, 1, 0), meaning straight upward.
+                            // jumpForce controls how strong the jump is.
+                            // ForceMode.Impulse applies the force immediately like a real jump.
+
+                            // Since we are using Mirror with NetworkTransform,
+                            // the new player position will automatically sync
+                            // to the server and all connected clients.
+                            rbplayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                        }
                 }
         
         void FixedUpdate()
@@ -87,12 +104,12 @@ public class NetworkPlayerController : NetworkBehaviour
 
         // [Command] makes this code run on the SERVER, even though the client called it
         [Command]
-        void CmdJump()
-        {
-            // The server applies the force to the ball
-            // Since the NetworkTransform syncs position, everyone will see the jump
-            rbplayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
+        // void CmdJump()
+        // {
+        //     // The server applies the force to the ball
+        //     // Since the NetworkTransform syncs position, everyone will see the jump
+        //     rbplayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        // }
         
         private void OnDisable()
         {
