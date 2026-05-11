@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 751722080041351120}
   m_Layer: 0
   m_Name: EnemyCube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Mirror::Mirror.NetworkIdentity
   sceneId: 0
-  _assetId: 750013353
+  _assetId: 3415987372
   serverOnly: 0
   visibility: 0
   hasSpawned: 0

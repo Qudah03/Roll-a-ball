@@ -70,21 +70,21 @@ public class NetworkPlayerController : NetworkBehaviour
                     // }
 
                     if (jumpAction.triggered && _isGrounded)
-                        {
-                            // Check if the jump button was pressed this frame
-                            // AND make sure the player is currently touching the ground.
-                            // This prevents infinite jumping in the air.
+                    {
+                        // Check if the jump button was pressed this frame
+                        // AND make sure the player is currently touching the ground.
+                        // This prevents infinite jumping in the air.
 
-                            // Apply an instant upward physics force to the Rigidbody.
-                            // Vector3.up = (0, 1, 0), meaning straight upward.
-                            // jumpForce controls how strong the jump is.
-                            // ForceMode.Impulse applies the force immediately like a real jump.
+                        // Apply an instant upward physics force to the Rigidbody.
+                        // Vector3.up = (0, 1, 0), meaning straight upward.
+                        // jumpForce controls how strong the jump is.
+                        // ForceMode.Impulse applies the force immediately like a real jump.
 
-                            // Since we are using Mirror with NetworkTransform,
-                            // the new player position will automatically sync
-                            // to the server and all connected clients.
-                            rbplayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                        }
+                        // Since we are using Mirror with NetworkTransform,
+                        // the new player position will automatically sync
+                        // to the server and all connected clients.
+                        rbplayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                    }
                 }
         
         void FixedUpdate()

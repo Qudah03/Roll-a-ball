@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5207025204310619822}
   - component: {fileID: -3350948953247932140}
   - component: {fileID: 751722080041351120}
+  - component: {fileID: 2112375765344306455}
   m_Layer: 0
   m_Name: PlayerBall
   m_TagString: Untagged
@@ -278,3 +279,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &2112375765344306455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7301472010110386973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a7757d2edb4643880384ce698ddc19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scenes.Multiplayer.MultiplayerScripts.PlayerHealth
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
