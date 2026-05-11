@@ -27,3 +27,16 @@ The default Mirror setup only spawns identical prefabs. To fulfill the "Player v
 
 **Current Known Issues Being Debugged:**
 * **Network Physics Jitter:** The `Player_Ball` experiences micro-bouncing/stuttering while moving. I am currently testing Rigidbody Interpolation, Continuous Collision Detection, and Dead Physics materials to sync the 50hz FixedUpdate physics loop with the network tick rate.
+
+## Phase 3: Server Authority & Collision States
+
+To prevent clients from calculating their own damage or ignoring hits due to lag, I made the collision logic entirely to the server. The server acts as the absolute referee for who touches the enemy.
+
+**What I Did:**
+* Tagged the `Enemy_Cube` prefab with an "Enemy" tag (same as i did the `minigame` and `Level2` scenes) for lightweight physics checks.
+* Wrote a `PlayerHealth` script utilizing Mirror's `[ServerCallback]`. This physically allows players to collide on their screens, but only the Server's computer is allowed to run the "Death" logic.
+* Implemented `[TargetRpc]`. When the server confirms an Enemy collision, it fires a targeted network message *only* to the specific player who died, disabling their local `NetworkPlayerController` and freezing their inputs without affecting the rest of the game state.
+
+**Next Steps (if asked):**
+* Hook the `TargetRpc` death state into a local "Game Over" UI panel.
+* Implement a server-wide `[SyncVar]` scoreboard to track points.
